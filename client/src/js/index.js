@@ -2,6 +2,16 @@ import { Workbox } from 'workbox-window';
 import Editor from './editor';
 import './database';
 import '../css/style.css';
+// import bootstrap
+import { Tooltip, Toast, Popover} from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import images
+import logo from '../images/logo.png';
+
+window.addEventListener('load', function() {
+    this.document.getElementById('logo').src = logo;
+})
 
 const main = document.querySelector('#main');
 main.innerHTML = '';

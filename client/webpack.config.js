@@ -18,11 +18,37 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'Webpack Plugin'
+      })
     ],
 
     module: {
       rules: [
+        {
+            // rules for CSS bundling
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader']
+        },
+        {
+            // rules for images bundling
+            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            type: 'asset/resource'
+        },
+        {
+            // babel loader
+            test: /\.m?js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        ['@babel/preset-env', { targets: "defaults" } ]
+                    ]
+                }
+            }
+        }
         
       ],
     },

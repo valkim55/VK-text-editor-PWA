@@ -1,4 +1,5 @@
 import { Workbox } from 'workbox-window';
+// not including header import because it's already imported into Editor - dependency graph
 import Editor from './editor';
 import './database';
 import '../css/style.css';
@@ -9,8 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import images
 import logo from '../images/logo.png';
 
+
 window.addEventListener('load', function() {
     this.document.getElementById('logo').src = logo;
+    console.log('this is an entry point');
 })
 
 const main = document.querySelector('#main');

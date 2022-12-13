@@ -1,11 +1,13 @@
- const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+ 
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { InjectManifest } = require('workbox-webpack-plugin');
+
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
-
 module.exports = () => {
   return {
     mode: 'development',
@@ -21,7 +23,33 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Webpack Plugin'
-      })
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js'
+      }),
+      new WebpackPwaManifest({
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'text editor that runs in the browser',
+        background_color: '#272822',
+        theme_color: '#272822',
+        start_url: './',
+        publicPath: './',
+        icons: [
+            {
+                src: path.resolve('./favicon.ico'),
+                sizes: [48],
+                destination: path.join('assets', 'icons')
+            },
+            {
+                src: path.resolve('./favicon.ico'),
+                size: '48x48',
+                destination: path.join('assets', 'icons'),
+                purpose: 'maskable'
+            }
+        ]
+    })
     ],
 
     module: {
@@ -33,7 +61,7 @@ module.exports = () => {
         },
         {
             // rules for images bundling
-            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
             type: 'asset/resource'
         },
         {

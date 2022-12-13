@@ -2,14 +2,12 @@ import { Workbox } from 'workbox-window';
 // not including header import because it's already imported into Editor - dependency graph
 import Editor from './editor';
 import './database';
+// import images
+import logo from '../images/logo.png';
 import '../css/style.css';
 // import bootstrap
 import { Tooltip, Toast, Popover} from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// import images
-import logo from '../images/logo.png';
-
 
 window.addEventListener('load', function() {
     this.document.getElementById('logo').src = logo;
@@ -41,6 +39,7 @@ if ('serviceWorker' in navigator) {
   // register workbox service worker
   const workboxSW = new Workbox('/src-sw.js');
   workboxSW.register();
+  console.log('SW registered');
 } else {
   console.error('Service workers are not supported in this browser.');
 }

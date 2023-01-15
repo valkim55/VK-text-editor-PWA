@@ -21,26 +21,29 @@ window.addEventListener('beforeinstallprompt', (event) => {
         event.prompt();
         butInstall.setAttribute('disabled', true);
         butInstall.textContent = 'installed!';
-      console.log('👍', 'butInstall-clicked');
-      console.log(window.deferredPrompt);
-      const promptEvent = window.deferredPrompt;
-      console.log(promptEvent);
-    
-      if (!promptEvent) {
-        // The deferred prompt isn't available.
-        console.log("Prompt Event Not Installed")
-        return;
-      }
-      // Show the install prompt.
-      promptEvent.prompt();
-      // Log the result
-      const result = await promptEvent.userChoice;
-      console.log('👍', 'userChoice', result);
-      // Reset the deferred prompt variable, since
-      // prompt() can only be called once.
-      window.deferredPrompt = null;
-      // Hide the install button.
-      divInstall.classList.toggle('hidden', true);
+        console.log('👍', 'butInstall-clicked');
+
+
+
+        console.log(window.deferredPrompt);
+        const promptEvent = window.deferredPrompt;
+        console.log(promptEvent);
+        
+        if (!promptEvent) {
+            // The deferred prompt isn't available.
+            console.log("Prompt Event Not Installed")
+            return;
+        }
+        // Show the install prompt.
+        promptEvent.prompt();
+        // Log the result
+        const result = await promptEvent.userChoice;
+        console.log('👍', 'userChoice', result);
+        // Reset the deferred prompt variable, since
+        // prompt() can only be called once.
+        window.deferredPrompt = null;
+        // Hide the install button.
+        divInstall.classList.toggle('hidden', true);
     });
 });
 

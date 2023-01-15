@@ -9,6 +9,8 @@ import '../css/style.css';
 import { Tooltip, Toast, Popover} from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
 window.addEventListener('load', function() {
     this.document.getElementById('logo').src = logo;
     console.log('this is an entry point');

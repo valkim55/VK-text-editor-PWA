@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack --mode development",
+    "build": "webpack --mode production",
     "start": "webpack --watch"
   },
   "author": "2U",
   "license": "UNLICENSED",
   "devDependencies": {
-    "babel-loader": "^8.2.2",
     "@babel/core": "^7.15.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
